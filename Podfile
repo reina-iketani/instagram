@@ -6,6 +6,22 @@ target 'instagram' do
   use_frameworks!
 
   # Pods for instagram
-  pod 'RealmSwift', '10.33.0'
-
+  pod 'FirebaseAnalytics', '10.3.0'
+  pod 'FirebaseAuth', '10.3.0'
+  pod 'FirebaseFirestore', '10.3.0'
+  pod 'FirebaseStorage', '10.3.0'
+  pod 'FirebaseStorageUI', '12.3.0'
+  pod 'SVProgressHUD', '2.2.5'
+  pod 'CLImageEditor/AllTools', '0.2.4'
 end
+
+post_install do |installer|
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '16.1'
+      end
+   end
+  end
+end
+
