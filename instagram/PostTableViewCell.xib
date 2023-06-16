@@ -103,6 +103,7 @@
             <connections>
                 <outlet property="captionLabel" destination="sfI-5B-PBg" id="R8g-ty-iSy"/>
                 <outlet property="commentButton" destination="PBe-Ir-Ytm" id="xM5-oB-MlE"/>
+                <outlet property="commentTableView" destination="naZ-cR-wRr" id="CsU-iF-nnX"/>
                 <outlet property="dateLabel" destination="RMF-z8-IJh" id="Xh5-HR-SsA"/>
                 <outlet property="likeButton" destination="huk-yG-6Og" id="Nn1-tk-lzf"/>
                 <outlet property="likeLabel" destination="CtW-b1-5CL" id="cdb-qw-4em"/>

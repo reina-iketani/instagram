@@ -14,6 +14,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     
     var postArray: [PostData] = []
+    var commentArray: [PostData.CommentData] = []
+     
     //Firestoreのリスナー
     var listener: ListenerRegistration?
     
@@ -114,6 +116,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func handleCommentButton(_ sender: UIButton, forEvent event: UIEvent) {
+
+        
         let touch = event.allTouches?.first
         let point = touch!.location(in: self.tableView)
         let indexPath = tableView.indexPathForRow(at: point)
@@ -121,9 +125,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let postData = postArray[indexPath!.row]
         
         
+        
         let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
         
         commentViewController.postData = postData
+        
         
         self.present(commentViewController,animated: true, completion: nil)
         

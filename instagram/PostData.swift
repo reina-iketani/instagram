@@ -63,24 +63,37 @@ class PostData: NSObject {
             }
         }
         
-        if let username = commentDic["username"] as? String {
-            self.name = username
-        }
-        
-        if let text = commentDic["text"] as? String{
-            self.caption = text
-        }
-        
-        if let timestamp = commentDic["date"] as? Timestamp {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd HH:mm"
-            self.date = formatter.string(from: timestamp.dateValue())
-        }
+//        if let username = commentDic["username"] as? String {
+//            self.name = username
+//        }
+//
+//        if let text = commentDic["text"] as? String{
+//            self.caption = text
+//        }
+//
+//        if let timestamp = commentDic["date"] as? Timestamp {
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "yyyy-MM-dd HH:mm"
+//            self.date = formatter.string(from: timestamp.dateValue())
+//        }
         
     }
     
     
-    
+    private func createCommentData(from commentDic: [String: Any]) -> CommentData? {
+            guard let id = commentDic["id"] as? String,
+                  let username = commentDic["username"] as? String,
+                  let text = commentDic["text"] as? String,
+                  let timestamp = commentDic["date"] as? Timestamp else {
+                return nil
+            }
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let dateString = formatter.string(from: timestamp.dateValue())
+            
+            return CommentData(id: id, username: username, text: text, date: dateString)
+        }
     
     
     

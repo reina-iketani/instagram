@@ -16,8 +16,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
-    
-    
+    @IBOutlet weak var commentTableView: UITableView!
     
     
     
@@ -46,8 +45,6 @@ class PostTableViewCell: UITableViewCell {
             self.likeButton.setImage(buttonImage, for: .normal)
         }
         
-//        let commentButtonImage = UIImage(named: "message")
-//        self.commentButton.setImage(commentButtonImage, for: .normal)
     }
         
     

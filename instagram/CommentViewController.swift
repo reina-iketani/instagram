@@ -13,7 +13,7 @@ import SVProgressHUD
 
 
 
-class CommentViewController: UIViewController {
+class CommentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var postData: PostData?
     
@@ -24,15 +24,23 @@ class CommentViewController: UIViewController {
     
     
     
+    var commentArray: [PostData.CommentData] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let postData = postData {
             labelView.text = "\(postData.name) : \(postData.caption)"
+            commentArray = postData.comments
+            print("commentArray: \(commentArray)")
+            
         }
 
-        // Do any additional setup after loading the view.
+        tableView.fillerRowHeight = UITableView.automaticDimension
+        tableView.delegate = self
+        tableView.dataSource = self
+        
     }
     
     
@@ -86,5 +94,23 @@ class CommentViewController: UIViewController {
             }
     }
     
+    
+    //コメント表示
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return commentArray.count
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let commentData = commentArray[indexPath.row]
+        cell.textLabel?.text = "\(commentData.username): \(commentData.text)"
+        
+        return cell
+    }
+    
 
+    
 }
