@@ -49,10 +49,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="naZ-cR-wRr">
-                        <rect key="frame" x="30" y="679.33333333333337" width="438" height="149.66666666666663"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </tableView>
                     <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBe-Ir-Ytm">
                         <rect key="frame" x="80" y="489" width="40" height="40"/>
                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
@@ -76,40 +72,45 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ob-Vn-OEx">
+                        <rect key="frame" x="30" y="788" width="438" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="naZ-cR-wRr" secondAttribute="trailing" constant="10" id="70m-SA-bkz"/>
                     <constraint firstItem="CtW-b1-5CL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="D7S-qt-Ebr"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7Ob-Vn-OEx" secondAttribute="trailing" constant="10" id="HUo-Ll-9db"/>
                     <constraint firstItem="CtW-b1-5CL" firstAttribute="top" secondItem="huk-yG-6Og" secondAttribute="bottom" constant="10" id="Kos-Cr-Fx5"/>
                     <constraint firstItem="PBe-Ir-Ytm" firstAttribute="leading" secondItem="huk-yG-6Og" secondAttribute="trailing" constant="10" id="KpL-N9-HcD"/>
                     <constraint firstItem="sfI-5B-PBg" firstAttribute="top" secondItem="CtW-b1-5CL" secondAttribute="bottom" constant="10" id="L7c-2D-Wnx"/>
                     <constraint firstAttribute="trailingMargin" secondItem="RMF-z8-IJh" secondAttribute="trailing" constant="10" id="N5U-9a-Eka"/>
                     <constraint firstItem="RMF-z8-IJh" firstAttribute="centerY" secondItem="huk-yG-6Og" secondAttribute="centerY" id="PNZ-dc-oHf"/>
-                    <constraint firstItem="naZ-cR-wRr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="TJ8-Rh-SfK"/>
-                    <constraint firstItem="naZ-cR-wRr" firstAttribute="top" secondItem="sfI-5B-PBg" secondAttribute="bottom" constant="10" id="UM7-Kc-fes"/>
                     <constraint firstItem="huk-yG-6Og" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="WTj-gq-TL1"/>
                     <constraint firstItem="MRA-Pz-fV2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="WZa-cX-bKY"/>
                     <constraint firstAttribute="trailing" secondItem="sfI-5B-PBg" secondAttribute="trailing" constant="10" id="XX3-f3-cwS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7Ob-Vn-OEx" secondAttribute="bottom" constant="10" id="Yfw-mO-fRs"/>
                     <constraint firstItem="MRA-Pz-fV2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="cME-bG-nOp"/>
                     <constraint firstItem="sfI-5B-PBg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="mZG-9E-tPI"/>
-                    <constraint firstItem="naZ-cR-wRr" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="10" id="meP-V5-c4V"/>
                     <constraint firstItem="RMF-z8-IJh" firstAttribute="leading" secondItem="PBe-Ir-Ytm" secondAttribute="trailing" constant="10" id="oZA-N5-YgF"/>
                     <constraint firstItem="PBe-Ir-Ytm" firstAttribute="centerY" secondItem="huk-yG-6Og" secondAttribute="centerY" id="oas-Ro-6Cr"/>
                     <constraint firstAttribute="trailingMargin" secondItem="MRA-Pz-fV2" secondAttribute="trailing" id="pSF-G6-j9D"/>
                     <constraint firstItem="huk-yG-6Og" firstAttribute="top" secondItem="MRA-Pz-fV2" secondAttribute="bottom" constant="10" id="uXB-hb-SsB"/>
+                    <constraint firstItem="7Ob-Vn-OEx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="vR5-wK-7Jw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="captionLabel" destination="sfI-5B-PBg" id="R8g-ty-iSy"/>
                 <outlet property="commentButton" destination="PBe-Ir-Ytm" id="xM5-oB-MlE"/>
-                <outlet property="commentTableView" destination="naZ-cR-wRr" id="CsU-iF-nnX"/>
+                <outlet property="commentLavel" destination="7Ob-Vn-OEx" id="Hw8-ZV-leW"/>
                 <outlet property="dateLabel" destination="RMF-z8-IJh" id="Xh5-HR-SsA"/>
                 <outlet property="likeButton" destination="huk-yG-6Og" id="Nn1-tk-lzf"/>
                 <outlet property="likeLabel" destination="CtW-b1-5CL" id="cdb-qw-4em"/>
                 <outlet property="postImageView" destination="MRA-Pz-fV2" id="n4M-V2-XO2"/>
             </connections>
-            <point key="canvasLocation" x="40" y="65"/>
+            <point key="canvasLocation" x="39.694656488549619" y="64.788732394366207"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -117,9 +118,6 @@
         <image name="message" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

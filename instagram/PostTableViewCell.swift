@@ -16,7 +16,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
-    @IBOutlet weak var commentTableView: UITableView!
+    
+    @IBOutlet weak var commentLavel: UILabel!
     
     
     
@@ -44,6 +45,14 @@ class PostTableViewCell: UITableViewCell {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: .normal)
         }
+        
+        
+        
+        var commentText = ""
+        for commentData in postData.comments {
+            commentText += "\(commentData.username): \(commentData.text)\n"
+        }
+        commentLavel.text = commentText
         
     }
         

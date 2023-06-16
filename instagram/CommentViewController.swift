@@ -41,6 +41,7 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.tableView.reloadData()
     }
     
     
@@ -107,6 +108,11 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let commentData = commentArray[indexPath.row]
         cell.textLabel?.text = "\(commentData.username): \(commentData.text)"
+        cell.detailTextLabel?.text = nil
+        
+        
+        
+            
         
         return cell
     }

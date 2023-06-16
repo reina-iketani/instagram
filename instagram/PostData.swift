@@ -35,7 +35,7 @@ class PostData: NSObject {
         self.id = document.documentID
         
         let postDic = document.data()
-        let commentDic = document.data()
+        
         
         if let name = postDic["name"] as? String {
             self.name = name
@@ -63,6 +63,25 @@ class PostData: NSObject {
             }
         }
         
+        if let comments = postDic["comments"] as? [CommentData]{
+            self.comments = comments
+        }
+        
+        
+        super.init()
+        
+        if let commentArray = postDic["comments"] as? [[String: Any]] {
+            for commentDic in commentArray {
+                if let commentData = createCommentData(from: commentDic) {
+                    self.comments.append(commentData)
+                } else {
+                    print("Failed to create commentData from: \(commentDic)")
+                }
+            }
+        }else {
+            print("comments field not found or invalid format.")
+        }
+        
 //        if let username = commentDic["username"] as? String {
 //            self.name = username
 //        }
@@ -80,26 +99,30 @@ class PostData: NSObject {
     }
     
     
+    
     private func createCommentData(from commentDic: [String: Any]) -> CommentData? {
             guard let id = commentDic["id"] as? String,
                   let username = commentDic["username"] as? String,
                   let text = commentDic["text"] as? String,
-                  let timestamp = commentDic["date"] as? Timestamp else {
+                  let timestamp = commentDic["date"] as? String else {
                 return nil
             }
             
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd HH:mm"
-            let dateString = formatter.string(from: timestamp.dateValue())
+            guard let date = formatter.date(from: timestamp) else {
+                return nil
+            }
+            
+            let dateString = formatter.string(from: date)
             
             return CommentData(id: id, username: username, text: text, date: dateString)
         }
     
     
     
-    
     override var description: String {
-        return "PostDate: name=\(name); caption=\(caption); date=\(date); likes\(likes.count); id=\(id);　comments=\(comments);"
+        return "PostDate: name=\(name); caption=\(caption); date=\(date); likes\(likes.count); id=\(id);　comments=\(comments.count);"
     }
     
     
