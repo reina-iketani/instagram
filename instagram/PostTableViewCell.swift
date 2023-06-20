@@ -18,6 +18,9 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var commentButton: UIButton!
     
     @IBOutlet weak var commentLavel: UILabel!
+    @IBOutlet weak var commentCountLavel: UILabel!
+    
+    @IBOutlet weak var commentViewButton: UIButton!
     
     
     
@@ -49,10 +52,26 @@ class PostTableViewCell: UITableViewCell {
         
         
         var commentText = ""
-        for commentData in postData.comments {
+        let maxDisplayCount = min(3, postData.comments.count)
+        
+        for i in 0..<maxDisplayCount {
+            let commentData = postData.comments[i]
             commentText += "\(commentData.username): \(commentData.text)\n"
         }
         commentLavel.text = commentText
+        print(commentText)
+        
+        let commentNumber = postData.comments.count
+        commentCountLavel.text = "\(commentNumber)"
+        
+        
+        if postData.comments.count > 3 {
+            commentViewButton.isHidden = false
+            commentViewButton.setTitle("コメントを全て表示する", for: .normal)
+        } else {
+            commentViewButton.isHidden = true
+        }
+        
         
     }
         

@@ -85,6 +85,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.commentButton.addTarget(self, action: #selector(handleCommentButton(_:forEvent:)), for: .touchUpInside )
         
+        cell.commentViewButton.addTarget(self, action: #selector(handleCommentViewButton(_:forEvent:)), for: .touchUpInside )
+        
         return cell
     }
     
@@ -135,7 +137,25 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-      
+    @objc func handleCommentViewButton(_ sender: UIButton, forEvent event: UIEvent) {
+
+        
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        let postData = postArray[indexPath!.row]
+        
+        
+        
+        let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
+        
+        commentViewController.postData = postData
+        
+        
+        self.present(commentViewController,animated: true, completion: nil)
+        
+    }
     
 
 }
