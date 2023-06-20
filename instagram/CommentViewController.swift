@@ -36,16 +36,49 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
             print("commentArray: \(commentArray)")
             
         }
+        
+        
+        let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+                tapGR.cancelsTouchesInView = false
+                self.view.addGestureRecognizer(tapGR)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         tableView.fillerRowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
         
+        
+        
         self.tableView.reloadData()
     }
     
     
-//キャンセルボタン
+    @objc func dismissKeyboard() {
+            self.view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+            if !textFieldView.isFirstResponder {
+                return
+            }
+        
+            if self.view.frame.origin.y == 0 {
+                if let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                    self.view.frame.origin.y -= keyboardRect.height
+                }
+            }
+        }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
+    
+    //キャンセルボタン
     @IBAction func returnButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
